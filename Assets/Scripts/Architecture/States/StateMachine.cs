@@ -1,4 +1,6 @@
-﻿namespace TDS.Architecture.States
+﻿using TDS.Architecture.Services;
+
+namespace TDS.Architecture.States
 {
     public class StateMachine : IService
     {

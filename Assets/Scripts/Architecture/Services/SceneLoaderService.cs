@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-namespace TDS.Architecture
+namespace TDS.Architecture.Services
 {
     public class SceneLoaderService : IService
     {
