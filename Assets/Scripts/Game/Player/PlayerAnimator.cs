@@ -1,38 +1,34 @@
 ﻿using UnityEngine;
 
-namespace TDS.Game
+namespace TDS.Game.Player
 {
     [RequireComponent(typeof(Animator))]
-    public class PlayerAnimator : MonoBehaviour
+    public class PlayerAnimator : AnimatorMonoBehaviour
     {
         #region Variables
 
+        private readonly int _isDead = Animator.StringToHash("IsDead");
+
         private readonly int _moveSpeed = Animator.StringToHash("MoveSpeed");
         private readonly int _shot = Animator.StringToHash("Shot");
-
-        private Animator _animator;
-
-        #endregion
-
-        #region Unity lifecycle
-
-        private void Awake()
-        {
-            _animator = GetComponent<Animator>();
-        }
 
         #endregion
 
         #region Public methods
 
+        public void SetIsDead()
+        {
+            Animator.SetTrigger(_isDead);
+        }
+
         public void SetMovement(float value)
         {
-            _animator.SetFloat(_moveSpeed, value);
+            Animator.SetFloat(_moveSpeed, value);
         }
 
         public void SetShot()
         {
-            _animator.SetTrigger(_shot);
+            Animator.SetTrigger(_shot);
         }
 
         #endregion

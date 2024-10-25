@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TDS.Game
+namespace TDS.Game.Player
 {
     public class PlayerMovement : MonoBehaviour
     {

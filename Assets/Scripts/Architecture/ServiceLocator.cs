@@ -22,7 +22,7 @@ namespace TDS.Architecture
         {
             get
             {
-                if (_instance == null)
+                if (_instance is null)
                 {
                     GameObject go = new(nameof(ServiceLocator));
                     DontDestroyOnLoad(go);

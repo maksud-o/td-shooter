@@ -8,6 +8,7 @@ namespace TDS.Game
     {
         #region Variables
 
+        [SerializeField] private int _damage = 20;
         [SerializeField] private float _lifetime = 5f;
         [SerializeField] private float _speed = 25f;
 
@@ -23,6 +24,16 @@ namespace TDS.Game
             _rb.velocity = transform.up * _speed;
 
             StartCoroutine(DestroyAfterLifetime());
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent(out Health health))
+            {
+                health.ChangeHealth(-_damage);
+            }
+
+            Destroy(gameObject);
         }
 
         #endregion
