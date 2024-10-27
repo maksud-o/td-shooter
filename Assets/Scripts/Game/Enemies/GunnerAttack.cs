@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using TDS.Game.Enemies.Gunner;
+using UnityEngine;
 
 namespace TDS.Game.Enemies
 {
-    public class EnemyAttack : MonoBehaviour
+    public class GunnerAttack : MonoBehaviour
     {
         #region Variables
 

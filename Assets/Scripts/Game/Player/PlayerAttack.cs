@@ -12,8 +12,8 @@ namespace TDS.Game.Player
         [SerializeField] private Transform _bulletSpawnPoint;
         [SerializeField] private float _shotCooldown = .2f;
         [SerializeField] private PlayerAnimator _playerAnimator;
-        private float _cooldownTimer;
 
+        private float _cooldownTimer;
         private bool _inCooldown;
 
         #endregion

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TDS.Game
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Collider2D))]
     public class Bullet : MonoBehaviour
     {
         #region Variables
@@ -26,7 +26,7 @@ namespace TDS.Game
             StartCoroutine(DestroyAfterLifetime());
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.TryGetComponent(out Health health))
             {

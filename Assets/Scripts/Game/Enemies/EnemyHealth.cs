@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+﻿using TDS.Game.Enemies.Base;
+using TDS.Game.Enemies.Gunner;
+using UnityEngine;
 
 namespace TDS.Game.Enemies
 {
-    [RequireComponent(typeof(EnemyAttack), typeof(Collider2D))]
     public class EnemyHealth : Health
     {
         #region Variables
 
-        [SerializeField] private EnemyAnimator _enemyAnimator;
-
-        private EnemyAttack _attack;
+        // private EnemyBehaviour[] behaviours;
+        private GunnerAttack _attack;
         private Collider2D _collider;
 
         #endregion
@@ -18,7 +18,7 @@ namespace TDS.Game.Enemies
 
         private void Awake()
         {
-            _attack = GetComponent<EnemyAttack>();
+            _attack = GetComponent<GunnerAttack>();
             _collider = GetComponent<Collider2D>();
         }
 
@@ -28,7 +28,7 @@ namespace TDS.Game.Enemies
 
         protected override void Die()
         {
-            _enemyAnimator.SetIsDead();
+            // _gunnerAnimator.SetIsDead();
 
             _attack.enabled = false;
             _collider.enabled = false;

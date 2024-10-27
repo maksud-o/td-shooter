@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-namespace TDS.Game.Enemies
+namespace TDS.Game.Enemies.Gunner
 {
-    public class EnemyAnimator : AnimatorMonoBehaviour
+    public class GunnerAnimator : AnimatorMonoBehaviour
     {
         #region Variables
 
         private readonly int _isDead = Animator.StringToHash("IsDead");
+        private readonly int _moveSpeed = Animator.StringToHash("MoveSpeed");
         private readonly int _shot = Animator.StringToHash("Shot");
 
         #endregion
@@ -16,6 +17,11 @@ namespace TDS.Game.Enemies
         public void SetIsDead()
         {
             Animator.SetTrigger(_isDead);
+        }
+
+        public void SetMoveSpeed(float speed)
+        {
+            Animator.SetFloat(_moveSpeed, speed);
         }
 
         public void SetShot()
