@@ -10,7 +10,7 @@ namespace TDS.Game.Enemies
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPoint;
         [SerializeField] private float _shotCooldown = 1f;
-        [SerializeField] private EnemyAnimator _enemyAnimator;
+        [SerializeField] private GunnerAnimator _gunnerAnimator;
 
         private float _cooldownTimer;
         private bool _inCooldown;
@@ -54,7 +54,7 @@ namespace TDS.Game.Enemies
 
         private void Shoot()
         {
-            _enemyAnimator.SetShot();
+            _gunnerAnimator.SetShot();
             Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
             _inCooldown = true;
         }
