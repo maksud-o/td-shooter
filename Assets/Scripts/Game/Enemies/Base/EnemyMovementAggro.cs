@@ -1,26 +1,16 @@
-﻿using TDS.Architecture;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TDS.Game.Enemies.Base
 {
-    [RequireComponent(typeof(EnemyMovement), typeof(EnemyIdle))]
-    public class EnemyMovementAggro : EnemyBehaviour
+    public abstract class EnemyMovementAggro : EnemyBehaviour
     {
         #region Variables
 
         [SerializeField] private TriggerObserver _triggerObserver;
-        private EnemyIdle _idle;
-        private EnemyMovement _movement;
 
         #endregion
 
         #region Unity lifecycle
-
-        private void Awake()
-        {
-            _movement = GetComponent<EnemyMovement>();
-            _idle = GetComponent<EnemyIdle>();
-        }
 
         private void OnEnable()
         {
@@ -36,31 +26,11 @@ namespace TDS.Game.Enemies.Base
 
         #endregion
 
-        #region Private methods
+        #region Protected methods
 
-        private void TriggerEnter2DCallback(Collider2D other)
-        {
-            if (!other.CompareTag(Tags.PLAYER))
-            {
-                return;
-            }
+        protected abstract void TriggerEnter2DCallback(Collider2D other);
 
-            _idle.Deactivate();
-            _movement.Activate();
-            _movement.SetTarget(other.transform);
-        }
-
-        private void TriggerExit2DCallback(Collider2D other)
-        {
-            if (!other.CompareTag(Tags.PLAYER))
-            {
-                return;
-            }
-
-            _idle.Activate();
-            _movement.Deactivate();
-            _movement.SetTarget(null);
-        }
+        protected abstract void TriggerExit2DCallback(Collider2D other);
 
         #endregion
     }

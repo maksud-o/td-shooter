@@ -12,7 +12,7 @@ namespace TDS.Game.Enemies.Base
 
         #region Public methods
 
-        public void SetTarget(Transform target)
+        public virtual void SetTarget(Transform target)
         {
             Target = target;
         }
