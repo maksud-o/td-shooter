@@ -52,6 +52,11 @@ namespace TDS.Game.Enemies.Base
 
         private void TriggerExit2DCallback(Collider2D other)
         {
+            if (!other.CompareTag(Tags.PLAYER))
+            {
+                return;
+            }
+
             _idle.Activate();
             _movement.Deactivate();
             _movement.SetTarget(null);

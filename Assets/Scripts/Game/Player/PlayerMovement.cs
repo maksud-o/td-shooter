@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace TDS.Game.Player
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovement : MonoBehaviour
     {
         #region Variables
@@ -14,10 +15,16 @@ namespace TDS.Game.Player
         [SerializeField] private float _movementSpeed = 10f;
 
         private Camera _camera;
+        private Rigidbody2D _rb;
 
         #endregion
 
         #region Unity lifecycle
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+        }
 
         private void Start()
         {
@@ -28,6 +35,16 @@ namespace TDS.Game.Player
         {
             ProcessMovement(_moveAction.action.ReadValue<Vector2>());
             ProcessLook(_lookAction.action.ReadValue<Vector2>());
+        }
+
+        private void OnEnable()
+        {
+            _rb.simulated = true;
+        }
+
+        private void OnDisable()
+        {
+            _rb.simulated = false;
         }
 
         #endregion

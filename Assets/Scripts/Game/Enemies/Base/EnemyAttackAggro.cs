@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TDS.Architecture;
+using UnityEngine;
 
 namespace TDS.Game.Enemies.Base
 {
@@ -38,11 +39,21 @@ namespace TDS.Game.Enemies.Base
 
         private void TriggerEnter2DCallback(Collider2D other)
         {
+            if (!other.CompareTag(Tags.PLAYER))
+            {
+                return;
+            }
+
             _attack.Activate();
         }
 
         private void TriggerExit2DCallback(Collider2D other)
         {
+            if (!other.CompareTag(Tags.PLAYER))
+            {
+                return;
+            }
+
             _attack.Deactivate();
         }
 
