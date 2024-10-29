@@ -67,7 +67,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5.533682
+  m_Radius: 15.989468
 --- !u!114 &3324367206464580576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7702355851718031943}
   - component: {fileID: 3288486747279988213}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: EnemySharpshooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthAmount: 1
+  _animator: {fileID: 7861621368402382719}
 --- !u!114 &3287622001389572193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7861621368402382719}
-  _attackCooldown: 1
+  _attackCooldown: 0.7
   _bulletPrefab: {fileID: -5557051935614019674, guid: 123ff5c0f613a694c92bf3ee274050f4,
     type: 3}
   _bulletSpawnPoint: {fileID: 1628282019869352197}
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d598cf14c0f44dda67c13d5197d9819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 0
+  _movementSpeed: 5
   _animator: {fileID: 7861621368402382719}
 --- !u!114 &2397354223130535724
 MonoBehaviour:
@@ -213,7 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7afe33575aa84dbaa65ff4d46230a28d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolPoints: []
+  _patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  _pauseBetweenPoints: 3
 --- !u!114 &7702355851718031943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +342,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 19.216137
+  m_Radius: 35.89008
 --- !u!114 &5250422523403838990
 MonoBehaviour:
   m_ObjectHideFlags: 0

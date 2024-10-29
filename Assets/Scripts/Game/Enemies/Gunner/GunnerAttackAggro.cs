@@ -34,8 +34,7 @@ namespace TDS.Game.Enemies.Gunner
             {
                 return;
             }
-
-            _movementAggro.Deactivate();
+            
             _attack.Activate();
         }
 

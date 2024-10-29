@@ -20,8 +20,17 @@ namespace TDS.Game.Enemies.Gunner
         {
             _movement = GetComponent<EnemyMovement>();
             _patrol = GetComponent<EnemyPatrol>();
-            
+
             _movement.Deactivate();
+            _patrol.Deactivate();
+        }
+
+        private void Update()
+        {
+            if (!_patrol.enabled && !_movement.enabled)
+            {
+                _patrol.Activate();
+            }
         }
 
         #endregion
