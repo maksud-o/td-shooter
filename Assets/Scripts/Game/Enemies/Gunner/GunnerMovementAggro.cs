@@ -20,6 +20,8 @@ namespace TDS.Game.Enemies.Gunner
         {
             _movement = GetComponent<EnemyMovement>();
             _patrol = GetComponent<EnemyPatrol>();
+            
+            _movement.Deactivate();
         }
 
         #endregion

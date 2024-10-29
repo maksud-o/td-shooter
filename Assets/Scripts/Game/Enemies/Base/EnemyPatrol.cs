@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace TDS.Game.Enemies.Base
 {
@@ -12,7 +13,7 @@ namespace TDS.Game.Enemies.Base
 
         #region Properties
 
-        protected Transform[] PatrolPoints => _patrolPoints;
+        protected IReadOnlyList<Transform> PatrolPoints => _patrolPoints;
 
         #endregion
     }

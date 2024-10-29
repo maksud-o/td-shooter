@@ -18,6 +18,7 @@ namespace TDS.Game.Enemies.Gunner
         {
             if (Target is null)
             {
+                Debug.LogError("No Target assigned!");
                 return;
             }
 
@@ -34,7 +35,14 @@ namespace TDS.Game.Enemies.Gunner
             float speed = _movementSpeed * Time.deltaTime;
             Vector2 movement = transform.up * speed;
             _animator.SetMoveSpeed(speed);
-            transform.Translate(movement, Space.World);
+            if (Vector3.Distance(transform.position, Target.transform.position) <= speed)
+            {
+                transform.position = Target.transform.position;
+            }
+            else
+            {
+                transform.Translate(movement, Space.World);
+            }
         }
 
         private void ProcessRotation()

@@ -20,6 +20,8 @@ namespace TDS.Game.Enemies.Gunner
         {
             _movementAggro = GetComponent<EnemyMovementAggro>();
             _attack = GetComponent<EnemyAttack>();
+            
+            _attack.Deactivate();
         }
 
         #endregion
