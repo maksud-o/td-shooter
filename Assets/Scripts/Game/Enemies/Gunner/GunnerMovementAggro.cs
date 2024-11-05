@@ -45,6 +45,7 @@ namespace TDS.Game.Enemies.Gunner
             }
 
             _patrol.Deactivate();
+            _movement.Activate();
             _movement.SetTarget(other.transform);
         }
 
@@ -56,6 +57,7 @@ namespace TDS.Game.Enemies.Gunner
             }
 
             _movement.SetTarget(null);
+            _movement.Deactivate();
             _patrol.Activate();
         }
 

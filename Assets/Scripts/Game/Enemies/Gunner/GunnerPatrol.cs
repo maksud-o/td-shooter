@@ -21,18 +21,18 @@ namespace TDS.Game.Enemies.Gunner
         private void Awake()
         {
             _movement = GetComponent<EnemyMovement>();
-            
-            _movement.Activate();
         }
 
         private void OnEnable()
         {
             StartCoroutine(Patrol());
+            _movement.Activate();
         }
 
         private void OnDisable()
         {
             StopCoroutine(Patrol());
+            _movement.Deactivate();
         }
 
         #endregion
