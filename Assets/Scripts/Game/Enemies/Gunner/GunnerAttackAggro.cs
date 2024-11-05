@@ -1,27 +1,23 @@
-﻿using TDS.Architecture;
-using TDS.Game.Enemies.Base;
+﻿using TDS.Game.Enemies.Base;
 using UnityEngine;
 
 namespace TDS.Game.Enemies.Gunner
 {
-    [RequireComponent(typeof(EnemyMovementAggro), typeof(EnemyAttack))]
+    [RequireComponent(typeof(EnemyMovementAggro))]
     public class GunnerAttackAggro : EnemyAttackAggro
     {
         #region Variables
 
-        private EnemyAttack _attack;
         private EnemyMovementAggro _movementAggro;
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _movementAggro = GetComponent<EnemyMovementAggro>();
-            _attack = GetComponent<EnemyAttack>();
-            
-            _attack.Deactivate();
         }
 
         #endregion
@@ -30,23 +26,16 @@ namespace TDS.Game.Enemies.Gunner
 
         protected override void TriggerEnter2DCallback(Collider2D other)
         {
-            if (!other.CompareTag(Tags.PLAYER))
-            {
-                return;
-            }
-            
-            _attack.Activate();
+            base.TriggerEnter2DCallback(other);
+
+            _movementAggro.Deactivate();
         }
 
         protected override void TriggerExit2DCallback(Collider2D other)
         {
-            if (!other.CompareTag(Tags.PLAYER))
-            {
-                return;
-            }
+            base.TriggerExit2DCallback(other);
 
             _movementAggro.Activate();
-            _attack.Deactivate();
         }
 
         #endregion

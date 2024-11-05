@@ -1,17 +1,26 @@
-﻿using UnityEngine;
+﻿using TDS.Architecture;
+using UnityEngine;
 
 namespace TDS.Game.Enemies.Base
 {
     [RequireComponent(typeof(EnemyAttack))]
-    public abstract class EnemyAttackAggro : EnemyBehaviour
+    public class EnemyAttackAggro : EnemyBehaviour
     {
         #region Variables
 
         [SerializeField] private TriggerObserver _triggerObserver;
 
+        private EnemyAttack _attack;
+
         #endregion
 
         #region Unity lifecycle
+
+        protected virtual void Awake()
+        {
+            _attack = GetComponent<EnemyAttack>();
+            _attack.Deactivate();
+        }
 
         private void OnEnable()
         {
@@ -29,9 +38,25 @@ namespace TDS.Game.Enemies.Base
 
         #region Protected methods
 
-        protected abstract void TriggerEnter2DCallback(Collider2D other);
+        protected virtual void TriggerEnter2DCallback(Collider2D other)
+        {
+            if (!other.CompareTag(Tags.PLAYER))
+            {
+                return;
+            }
 
-        protected abstract void TriggerExit2DCallback(Collider2D other);
+            _attack.Activate();
+        }
+
+        protected virtual void TriggerExit2DCallback(Collider2D other)
+        {
+            if (!other.CompareTag(Tags.PLAYER))
+            {
+                return;
+            }
+
+            _attack.Deactivate();
+        }
 
         #endregion
     }

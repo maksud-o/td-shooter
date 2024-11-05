@@ -6,13 +6,15 @@ using UnityEngine;
 namespace TDS.Game.Enemies.Gunner
 {
     [RequireComponent(typeof(EnemyMovement))]
-    public class GunnerPatrol : EnemyPatrol
+    public class GunnerPatrol : EnemyIdle
     {
         #region Variables
 
         [SerializeField] private float _pauseBetweenPoints = 3f;
+        [SerializeField] private Transform[] _patrolPoints;
 
         private EnemyMovement _movement;
+        private Coroutine _patrolCoroutine;
 
         #endregion
 
@@ -25,13 +27,14 @@ namespace TDS.Game.Enemies.Gunner
 
         private void OnEnable()
         {
-            StartCoroutine(Patrol());
+            _patrolCoroutine = StartCoroutine(Patrol());
             _movement.Activate();
         }
 
         private void OnDisable()
         {
-            StopCoroutine(Patrol());
+            StopCoroutine(_patrolCoroutine);
+            _movement.SetTarget(null);
             _movement.Deactivate();
         }
 
@@ -41,22 +44,21 @@ namespace TDS.Game.Enemies.Gunner
 
         private IEnumerator Patrol()
         {
-            Transform[] patrolPoints = PatrolPoints.ToArray();
             while (true)
             {
-                if (patrolPoints.Length <= 1)
+                if (_patrolPoints.Length <= 1)
                 {
                     break;
                 }
 
-                foreach (Transform point in PatrolPoints)
+                foreach (Transform point in _patrolPoints)
                 {
                     _movement.SetTarget(point);
                     yield return new WaitUntil(() => transform.position == point.position);
                     yield return new WaitForSeconds(_pauseBetweenPoints);
                 }
 
-                patrolPoints = patrolPoints.Reverse().ToArray();
+                _patrolPoints = _patrolPoints.Reverse().ToArray();
             }
         }
 

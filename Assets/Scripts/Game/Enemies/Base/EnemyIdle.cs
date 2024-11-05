@@ -1,4 +1,4 @@
 ﻿namespace TDS.Game.Enemies.Base
 {
-    public abstract class EnemyPatrol : EnemyBehaviour { }
+    public abstract class EnemyIdle : EnemyBehaviour { }
 }
