@@ -67,7 +67,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15.989468
+  m_Radius: 5.9791145
 --- !u!114 &3324367206464580576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 3287622001389572193}
   - component: {fileID: -5849718104370556587}
   - component: {fileID: 2397354223130535724}
-  - component: {fileID: 7702355851718031943}
   - component: {fileID: 3288486747279988213}
+  - component: {fileID: 8376828360612823943}
   m_Layer: 7
   m_Name: EnemySharpshooter
   m_TagString: Untagged
@@ -214,23 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7afe33575aa84dbaa65ff4d46230a28d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseBetweenPoints: 3
   _patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
-  _pauseBetweenPoints: 3
---- !u!114 &7702355851718031943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859354951650058514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0067bcffdd34c6eb1e5ae4fccea5fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerObserver: {fileID: 5250422523403838990}
 --- !u!114 &3288486747279988213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +231,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 3324367206464580576}
+--- !u!114 &8376828360612823943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859354951650058514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8c955642864682b4c3a4a764d0fb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerObserver: {fileID: 5250422523403838990}
 --- !u!1 &4565721178224240538
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 36170cbdcf56ac647afe6ce0b5ac31aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
