@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace TDS.Game.Player
 {
-    [RequireComponent(typeof(PlayerAttack), typeof(PlayerMovement))]
-    public class PlayerHealth : Health
+    [RequireComponent(typeof(Health), typeof(PlayerAttack), typeof(PlayerMovement))]
+    public class PlayerDeath : Death
     {
         #region Variables
 
@@ -14,6 +14,7 @@ namespace TDS.Game.Player
         [SerializeField] private float _restartDelay = 5f;
 
         private PlayerAttack _attack;
+        private Health _health;
         private PlayerMovement _movement;
 
         #endregion
@@ -24,6 +25,17 @@ namespace TDS.Game.Player
         {
             _attack = GetComponent<PlayerAttack>();
             _movement = GetComponent<PlayerMovement>();
+            _health = GetComponent<Health>();
+        }
+
+        private void OnEnable()
+        {
+            _health.OnZeroHealth += Die;
+        }
+
+        private void OnDisable()
+        {
+            _health.OnZeroHealth -= Die;
         }
 
         #endregion

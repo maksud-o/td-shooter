@@ -15,7 +15,7 @@ namespace TDS.Game
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out PlayerHealth health))
+            if (other.TryGetComponent(out Health health))
             {
                 health.ChangeHealth(_healAmount);
                 Destroy(gameObject);

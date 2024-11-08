@@ -1,12 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace TDS.Game
 {
-    public abstract class Health : MonoBehaviour
+    public class Health : MonoBehaviour
     {
         #region Variables
 
-        [SerializeField] protected int HealthAmount;
+        [SerializeField] private int _healthAmount;
+
+        #endregion
+
+        #region Events
+
+        public event Action OnZeroHealth;
 
         #endregion
 
@@ -14,18 +21,12 @@ namespace TDS.Game
 
         public void ChangeHealth(int damage)
         {
-            HealthAmount += damage;
-            if (HealthAmount <= 0)
+            _healthAmount += damage;
+            if (_healthAmount <= 0)
             {
-                Die();
+                OnZeroHealth?.Invoke();
             }
         }
-
-        #endregion
-
-        #region Protected methods
-
-        protected abstract void Die();
 
         #endregion
     }

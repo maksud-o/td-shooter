@@ -90,12 +90,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8806391614204458158}
   - component: {fileID: 2813239118578825770}
-  - component: {fileID: 651696680620574557}
   - component: {fileID: 3287622001389572193}
   - component: {fileID: -5849718104370556587}
   - component: {fileID: 2397354223130535724}
   - component: {fileID: 3288486747279988213}
   - component: {fileID: 8376828360612823943}
+  - component: {fileID: 2345544947363498190}
+  - component: {fileID: 5037474893714347313}
   m_Layer: 7
   m_Name: EnemySharpshooter
   m_TagString: Untagged
@@ -157,20 +158,6 @@ CircleCollider2D:
   m_Offset: {x: 0.12119198, y: 0.05953312}
   serializedVersion: 2
   m_Radius: 0.5531554
---- !u!114 &651696680620574557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859354951650058514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f503b63ce54399b02e5ad508afab58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthAmount: 1
-  _animator: {fileID: 7861621368402382719}
 --- !u!114 &3287622001389572193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +231,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 5250422523403838990}
+--- !u!114 &2345544947363498190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859354951650058514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df9a01c65f04f01a2db812bae1e52c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthAmount: 1
+--- !u!114 &5037474893714347313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859354951650058514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10471c54eca84781a04028d104cf4cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7861621368402382719}
 --- !u!1 &4565721178224240538
 GameObject:
   m_ObjectHideFlags: 0
