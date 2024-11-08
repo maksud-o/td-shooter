@@ -26,7 +26,7 @@ namespace TDS.Game
             StartCoroutine(DestroyAfterLifetime());
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.TryGetComponent(out Health health))
             {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3790119849970001703}
   - component: {fileID: 3648966888528670616}
   - component: {fileID: 3324367206464580576}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Trigger - Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1628282019869352197}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Marker - Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6653461336844479297}
   - component: {fileID: 7520671047633648773}
   - component: {fileID: 5250422523403838990}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Trigger - Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
