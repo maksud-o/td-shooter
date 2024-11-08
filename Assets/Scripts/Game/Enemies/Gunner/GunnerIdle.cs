@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Drawing;
 using System.Linq;
 using TDS.Game.Enemies.Base;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace TDS.Game.Enemies.Gunner
 {
     [RequireComponent(typeof(EnemyMovement))]
-    public class GunnerPatrol : EnemyIdle
+    public class GunnerIdle : EnemyIdle
     {
         #region Variables
 
@@ -15,6 +16,7 @@ namespace TDS.Game.Enemies.Gunner
 
         private EnemyMovement _movement;
         private Coroutine _patrolCoroutine;
+        private int _patrolIndex = 0;
 
         #endregion
 
@@ -44,21 +46,19 @@ namespace TDS.Game.Enemies.Gunner
 
         private IEnumerator Patrol()
         {
+            var waitUntil = new WaitUntil(() => transform.position == _patrolPoints[_patrolIndex].position);
+            var waitForSeconds = new WaitForSeconds(_pauseBetweenPoints);
+            
             while (true)
             {
                 if (_patrolPoints.Length <= 1)
                 {
                     break;
                 }
-
-                foreach (Transform point in _patrolPoints)
-                {
-                    _movement.SetTarget(point);
-                    yield return new WaitUntil(() => transform.position == point.position);
-                    yield return new WaitForSeconds(_pauseBetweenPoints);
-                }
-
-                _patrolPoints = _patrolPoints.Reverse().ToArray();
+                _movement.SetTarget(_patrolPoints[_patrolIndex]);
+                yield return waitUntil;
+                yield return waitForSeconds;
+                _patrolIndex = (_patrolIndex + 1) % _patrolPoints.Length;
             }
         }
 
