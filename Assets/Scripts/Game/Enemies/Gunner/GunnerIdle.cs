@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Drawing;
-using System.Linq;
 using TDS.Game.Enemies.Base;
 using UnityEngine;
 
@@ -16,7 +14,7 @@ namespace TDS.Game.Enemies.Gunner
 
         private EnemyMovement _movement;
         private Coroutine _patrolCoroutine;
-        private int _patrolIndex = 0;
+        private int _patrolIndex;
 
         #endregion
 
@@ -48,15 +46,17 @@ namespace TDS.Game.Enemies.Gunner
         {
             var waitUntil = new WaitUntil(() => transform.position == _patrolPoints[_patrolIndex].position);
             var waitForSeconds = new WaitForSeconds(_pauseBetweenPoints);
-            
+
             while (true)
             {
                 if (_patrolPoints.Length <= 1)
                 {
                     break;
                 }
+
                 _movement.SetTarget(_patrolPoints[_patrolIndex]);
                 yield return waitUntil;
+                _movement.SetTarget(null);
                 yield return waitForSeconds;
                 _patrolIndex = (_patrolIndex + 1) % _patrolPoints.Length;
             }

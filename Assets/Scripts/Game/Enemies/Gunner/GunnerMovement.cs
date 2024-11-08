@@ -18,12 +18,17 @@ namespace TDS.Game.Enemies.Gunner
         {
             if (Target is null)
             {
-                Debug.LogError("No Target assigned!");
+                _animator.SetMoveSpeed(0);
                 return;
             }
 
-            ProcessRotation(); // TODO: visual bug when near target
+            ProcessRotation();
             ProcessMovement();
+        }
+
+        private void OnDisable()
+        {
+            _animator.SetMoveSpeed(0);
         }
 
         #endregion
