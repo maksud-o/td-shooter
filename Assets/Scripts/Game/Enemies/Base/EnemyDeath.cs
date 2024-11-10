@@ -1,4 +1,5 @@
-﻿using TDS.Game.Enemies.Gunner;
+﻿using System;
+using TDS.Game.Enemies.Gunner;
 using UnityEngine;
 
 namespace TDS.Game.Enemies.Base
@@ -13,6 +14,12 @@ namespace TDS.Game.Enemies.Base
 
         private EnemyBehaviour[] _enemyBehaviours;
         private Health _health;
+
+        #endregion
+
+        #region Events
+
+        public event Action OnDeath;
 
         #endregion
 
@@ -43,7 +50,8 @@ namespace TDS.Game.Enemies.Base
         {
             _animator.SetIsDead();
             DeactivateEnemyBehaviours();
-            _collider = GetComponent<Collider2D>();
+            _collider.enabled = false;
+            OnDeath?.Invoke();
         }
 
         #endregion
